@@ -50,7 +50,7 @@ jobs:
     - name: Run SQL Container
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG_APP: app-latest
+        IMAGE_TAG_APP: mysql-latest
       run: |
         
         # Start the database container in the custom network 
