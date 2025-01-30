@@ -2,7 +2,7 @@ name: Deploy Flask App and MySQL to ECR
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   
