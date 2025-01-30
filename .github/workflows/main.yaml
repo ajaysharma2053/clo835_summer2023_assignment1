@@ -66,7 +66,8 @@ jobs:
         
         # Start the Flask app container in the custom network
         docker run -d -p 8080:8080 --name flask-app --network flask-network -e DBHOST=mysql-db -e DBUSER=root -e DBPWD=password -e DATABASE=employees -e DBPORT=3306 $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_APP
-
+        docker ps -a
+        docker network ls
         sleep 10  # Wait for the Flask app to start
 
         # Test if Flask app is running correctly
