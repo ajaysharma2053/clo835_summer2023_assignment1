@@ -53,7 +53,7 @@ jobs:
         IMAGE_TAG_DB: mysql-latest
       run: |
         
-        # Start the database container in the custom network 
+        # Start the mysql database container in the custom network 
         docker run -d --name mysql-db --network flask-network -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=employees $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_DB
         
         sleep 15  # Wait for MySQL to initialize
