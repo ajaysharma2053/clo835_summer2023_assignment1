@@ -70,7 +70,7 @@ jobs:
         docker network ls
         sleep 10  # Wait for the Flask app to start
 
-        # Test if Flask app is running correctly
+        # Test if Flask app is running correctly or not
         curl -vvv http://localhost:8080 || (echo "Flask App failed to start!" && exit 1)
 
         # Cleanup after test
