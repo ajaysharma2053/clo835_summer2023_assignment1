@@ -14,7 +14,7 @@ DATABASE = os.environ.get("DATABASE") or "employees"
 COLOR_FROM_ENV = os.environ.get('APP_COLOR') or "lime"
 DBPORT = int(os.environ.get("DBPORT"))
 
-# Create a connection to the MySQL database
+# Create a connection to the MySQL database for assign
 db_conn = connections.Connection(
     host= DBHOST,
     port=DBPORT,
