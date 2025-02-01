@@ -87,18 +87,27 @@ resource "aws_security_group" "my_sg" {
   }
 
   ingress {
-    description      = "Allow HTTP traffic on port 81"
-    from_port        = 81
-    to_port          = 81
+    description      = "Allow HTTP traffic on port 8080"
+    from_port        = 8080
+    to_port          = 8080
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
 
   ingress {
-    description      = "Allow HTTP traffic on port 82"
-    from_port        = 82
-    to_port          = 82
+    description      = "Allow HTTP traffic on port 8081"
+    from_port        = 8081
+    to_port          = 8081
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress {
+    description      = "Allow HTTP traffic on port 8082"
+    from_port        = 8082
+    to_port          = 8082
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
@@ -106,8 +115,8 @@ resource "aws_security_group" "my_sg" {
 
   ingress {
     description      = "Allow HTTP traffic on port 83"
-    from_port        = 83
-    to_port          = 83
+    from_port        = 8083
+    to_port          = 8083
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
@@ -170,22 +179,3 @@ resource "aws_ecr_repository" "my_ecr_repo" {
   )
 }
 
-# # ECR Repository Policy (Optional)
-# resource "aws_ecr_repository_policy" "my_ecr_policy" {
-#   repository = aws_ecr_repository.my_ecr_repo.name
-
-#   policy = jsonencode({
-#     Version = "2012-10-17",
-#     Statement = [
-#       {
-#         Effect = "Allow",
-#         Principal = "*",
-#         Action = [
-#           "ecr:GetDownloadUrlForLayer",
-#           "ecr:BatchGetImage",
-#           "ecr:BatchCheckLayerAvailability"
-#         ]
-#       }
-#     ]
-#   })
-# }
