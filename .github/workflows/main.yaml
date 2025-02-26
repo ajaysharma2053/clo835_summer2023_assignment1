@@ -64,7 +64,7 @@ jobs:
         IMAGE_TAG_APP: app-latest
       run: |
         
-        # Start the Flask app container in the custom network
+        # Start the Flask app container in the network
         docker run -d -p 8080:8080 --name flask-app --network flask-network -e DBHOST=mysql-db -e DBUSER=root -e DBPWD=password -e DATABASE=employees -e DBPORT=3306 $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_APP
         docker ps -a
         docker network ls
