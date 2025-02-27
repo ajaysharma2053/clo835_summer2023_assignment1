@@ -30,7 +30,7 @@ jobs:
     - name: Build, Tag, and Push MySQL Database Image to ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG_DB: mysql-newversion
+        IMAGE_TAG_DB: mysql-latest
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_DB -f Dockerfile_mysql .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_DB
@@ -50,7 +50,7 @@ jobs:
     - name: Run SQL Container
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG_DB: mysql-newversion
+        IMAGE_TAG_DB: mysql-latest
       run: |
         
         # Start the mysql database container in the custom network 
