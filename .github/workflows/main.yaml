@@ -39,7 +39,7 @@ jobs:
     - name: Build, Test, Tag, and Push Flask App Image to ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG_APP: app-newversion
+        IMAGE_TAG_APP: app-latest
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_APP -f Dockerfile .
         sleep 10
@@ -61,7 +61,7 @@ jobs:
     - name: Run App Container
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG_APP: app-newversion
+        IMAGE_TAG_APP: app-latest
       run: |
         
         # Start the Flask app container in the network
