@@ -30,7 +30,7 @@ jobs:
     - name: Build, Tag, and Push MySQL Database Image to ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG_DB: mysql-newversion
+        IMAGE_TAG_DB: mysql-v1
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_DB -f Dockerfile_mysql .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_DB
@@ -39,7 +39,7 @@ jobs:
     - name: Build, Test, Tag, and Push Flask App Image to ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG_APP: app-newversion
+        IMAGE_TAG_APP: app-v1
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG_APP -f Dockerfile .
         sleep 10
@@ -50,7 +50,7 @@ jobs:
     - name: Run SQL Container
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG_DB: mysql-newversion
+        IMAGE_TAG_DB: mysql-v1
       run: |
         
         # Start the mysql database container in the custom network 
@@ -61,7 +61,7 @@ jobs:
     - name: Run App Container
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        IMAGE_TAG_APP: app-newversion
+        IMAGE_TAG_APP: app-v1
       run: |
         
         # Start the Flask app container in the network
